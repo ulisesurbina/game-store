@@ -9,12 +9,12 @@ const { GameInConsole } = require('../models/gameInConsole.model');
 const { catchAsync } = require('../utils/catchAsync.util');
 
 const createGame = catchAsync(async (req, res, next) => {
-	const { title, genre, consoleId } = req.body;
+	const { title, genre} = req.body;
 
 	const newGame = await Game.create({ title, genre });
 
 	// Assign game to console
-	await GameInConsole.create({ consoleId, gameId: newGame.id });
+	// await GameInConsole.create({ consoleId, gameId: newGame.id });
 
 	res.status(201).json({
 		status: 'success',
